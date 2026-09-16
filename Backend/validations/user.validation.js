@@ -4,6 +4,7 @@ import {z} from "zod";
 // Register zod validtion
 export const registerUserSchema = z.object({
     body: z.object({
+        userName: z.string().min(2, "Name must be compose from first name and last name"),
         email: z.string().email("Email must be valid as email should be"),
         password: z.string().min(8, "Password must be at least 8 characters"),
     }),
@@ -13,6 +14,7 @@ export const registerUserSchema = z.object({
 // Login zod validation
 export const loginUserSchema = z.object({
     body: z.object({
+        userName: z.string().min(1, "User name is required "),
         email: z.string().email("Email must be valid"),
         password: z.string().min(1, "Password is required"),
     }),
